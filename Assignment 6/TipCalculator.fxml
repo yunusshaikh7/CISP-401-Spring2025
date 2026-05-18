@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Name: Yunus Shaikh
+  Course: CISP 401
+  Assignment: A6
+  File: TipCalculator.fxml
+  Purpose: This FXML file defines the GUI layout for the Tip Calculator
+           app. It uses a 2-column GridPane with 4 rows for Amount,
+           tip percent label/slider, Tip, and Total. The fx:id values
+           wire each control to a field in TipCalculatorController.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<!-- Root layout: 2-column grid, controller class is TipCalculatorController -->
+<GridPane alignment="CENTER" hgap="8.0" vgap="8.0"
+   xmlns="http://javafx.com/javafx/8.0.171"
+   xmlns:fx="http://javafx.com/fxml/1"
+   fx:controller="TipCalculatorController">
+
+   <!-- Padding around the whole grid so things are not touching the window edge -->
+   <padding>
+      <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
+   </padding>
+
+   <!-- Column 0 holds the labels (right-aligned), column 1 holds the inputs/outputs -->
+   <columnConstraints>
+      <ColumnConstraints halignment="RIGHT" minWidth="70.0" />
+      <ColumnConstraints hgrow="ALWAYS" minWidth="170.0" />
+   </columnConstraints>
+
+   <!-- Four rows: Amount, tip percent, Tip, Total -->
+   <rowConstraints>
+      <RowConstraints minHeight="30.0" />
+      <RowConstraints minHeight="30.0" />
+      <RowConstraints minHeight="30.0" />
+      <RowConstraints minHeight="30.0" />
+   </rowConstraints>
+
+   <children>
+      <!-- Row 0: Amount label and the text field where the user types the bill -->
+      <Label text="Amount" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+      <TextField fx:id="amountTextField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+      <!-- Row 1: Tip percent label and slider (0 to 30, snaps to 5, default 15) -->
+      <Label fx:id="tipPercentageLabel" text="15%" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+      <Slider fx:id="tipPercentageSlider" blockIncrement="5.0" majorTickUnit="5.0"
+         max="30.0" min="0.0" showTickLabels="false" showTickMarks="false"
+         snapToTicks="true" value="15.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+      <!-- Row 2: Tip label and read-only field that shows the calculated tip -->
+      <Label text="Tip" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+      <TextField fx:id="tipTextField" editable="false" focusTraversable="false"
+         GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+      <!-- Row 3: Total label and read-only field that shows bill plus tip -->
+      <Label text="Total" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+      <TextField fx:id="totalTextField" editable="false" focusTraversable="false"
+         GridPane.columnIndex="1" GridPane.rowIndex="3" />
+   </children>
+</GridPane>
